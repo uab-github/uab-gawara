@@ -1,0 +1,18 @@
+.join-group{
+  background-color: #0054A6
+}
+.join-group:hover{
+  background-color:#032d56
+}
+.font-uab-color{
+  color: #0054A6;
+}
+.author-into-list li a i{
+  color: #0054A6;
+}
+ul .main-menu li:hover{
+  color: blueviolet;
+}
+.thanks-card{
+  border-radius: 8px;
+}
