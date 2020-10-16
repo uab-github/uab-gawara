@@ -1,28 +1,33 @@
 <template>
 
-    <transition name="modal">
-      <div class="modal-mask">
-        <div class="modal-wrapper">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true" @click="showModal = false">&times;</span>
-                </button>
+  <transition name="modal">
+    <div class="modal-mask">
+      <div class="modal-wrapper">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Group Save</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true" @click="showModal = false">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="phone">Enter Phone</label>
+                <input type="text" class="form-control" id="phone"
+                       aria-describedby="emailHelp" placeholder="Enter phone">
               </div>
-              <div class="modal-body">
-                <p>Modal body text goes here.</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" @click="showModal = false">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
+              <!--<p>Modal body text goes here.</p>-->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="edit-btn join-group" @click="save">Save Change</button>
+              <!--<button type="button" class="btn btn-primary">Save changes</button>-->
             </div>
           </div>
         </div>
       </div>
-    </transition>
+    </div>
+  </transition>
 </template>
 <script>
   import axios from '~/plugins/axios'
@@ -31,22 +36,27 @@
 
     data() {
       return {
-        groupData: {}
+        groupData: {},
+        showModal: false
       }
     },
 
-    // props: ['group'],
+    props: [ 'modalStatus' ],
     mounted() {
     },
 
     created() {
-      this.groupInfo();
+      // this.groupInfo();
     },
     methods: {
       async groupInfo() {
         let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
         this.groupData = groupInfoData.data
       },
+      save() {
+        this.showModal = false;
+        this.modalStatus(false);
+      }
     }
 
   }

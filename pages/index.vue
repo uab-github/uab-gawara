@@ -65,34 +65,35 @@
                 </div>
               </div>
               <div v-if="showModal">
-                <transition name="modal">
-                  <div class="modal-mask">
-                    <div class="modal-wrapper">
-                      <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title">Group Save</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true" @click="showModal = false">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <div class="form-group">
-                              <label for="phone">Enter Phone</label>
-                              <input type="text" class="form-control" id="phone"
-                                     aria-describedby="emailHelp" placeholder="Enter phone">
-                            </div>
-                            <!--<p>Modal body text goes here.</p>-->
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="edit-btn join-group" @click="save">Save Change</button>
-                            <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </transition>
+                <modal :modal-status="modalStatus"></modal>
+                <!--<transition name="modal">-->
+                <!--<div class="modal-mask">-->
+                <!--<div class="modal-wrapper">-->
+                <!--<div class="modal-dialog" role="document">-->
+                <!--<div class="modal-content">-->
+                <!--<div class="modal-header">-->
+                <!--<h5 class="modal-title">Group Save</h5>-->
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                <!--<span aria-hidden="true" @click="showModal = false">&times;</span>-->
+                <!--</button>-->
+                <!--</div>-->
+                <!--<div class="modal-body">-->
+                <!--<div class="form-group">-->
+                <!--<label for="phone">Enter Phone</label>-->
+                <!--<input type="text" class="form-control" id="phone"-->
+                <!--aria-describedby="emailHelp" placeholder="Enter phone">-->
+                <!--</div>-->
+                <!--&lt;!&ndash;<p>Modal body text goes here.</p>&ndash;&gt;-->
+                <!--</div>-->
+                <!--<div class="modal-footer">-->
+                <!--<button type="button" class="edit-btn join-group" @click="save">Save Change</button>-->
+                <!--&lt;!&ndash;<button type="button" class="btn btn-primary">Save changes</button>&ndash;&gt;-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</transition>-->
               </div>
 
               <div class="card" v-for="(title, index) in titles">
@@ -119,6 +120,7 @@
   import GroupInfo from "../components/home/GroupInfo";
   import Images from "../components/home/Images";
   import Wish from "../components/home/Wish";
+  import Modal from "../components/home/Modal";
   import axios from 'axios'
 
   export default {
@@ -148,7 +150,7 @@
     },
     components: {
 
-      MainHeader, Navbar, GroupInfo, Images, Wish
+      MainHeader, Navbar, GroupInfo, Images, Wish, Modal
     },
     mounted() {
       $(".img-popup").lightGallery();
@@ -160,44 +162,7 @@
       });
     },
     created() {
-      // $(".img-popup").lightGallery();
-      //
-      // // light gallery images
-      // $(".img-gallery").lightGallery({
-      //   selector: ".gallery-selector",
-      //   hash: false
-      // });
-      // $('img.zoomable').css({cursor: 'pointer'}).live('click', function () {
-      //   var img = $(this);
-      //   var bigImg = $('<img />').css({
-      //     'max-width': '100%',
-      //     'max-height': '100%',
-      //     'display': 'inline'
-      //   });
-      //   bigImg.attr({
-      //     src: img.attr('src'),
-      //     alt: img.attr('alt'),
-      //     title: img.attr('title')
-      //   });
-      //   var over = $('<div />').text(' ').css({
-      //     'height': '100%',
-      //     'width': '100%',
-      //     'background': 'rgba(0,0,0,.82)',
-      //     'position': 'fixed',
-      //     'top': 0,
-      //     'left': 0,
-      //     'opacity': 0.0,
-      //     'cursor': 'pointer',
-      //     'z-index': 9999,
-      //     'text-align': 'center'
-      //   }).append(bigImg).bind('click', function () {
-      //     $(this).fadeOut(300, function () {
-      //       $(this).remove();
-      //     });
-      //   }).insertAfter(this).animate({
-      //     'opacity': 1
-      //   }, 300);
-      // });
+
     },
     computed: {
       url() {
@@ -229,7 +194,12 @@
       },
       save() {
         this.showModal = false
+      },
+      modalStatus(request){
+        this.showModal = request;
+        console.log("Hello12312323123123213");
       }
+
     }
   }
 </script>
