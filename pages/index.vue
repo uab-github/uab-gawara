@@ -22,7 +22,7 @@
               <navbar></navbar>
               <div class="col-lg-2 col-md-3 d-none d-md-block">
                 <div class="profile-edit-panel">
-                  <button class="edit-btn join-group">Join Group</button>
+                  <button class="edit-btn join-group" @click="showModal = true">Join Group</button>
                 </div>
               </div>
             </div>
@@ -58,13 +58,43 @@
                     for 'lorem ipsum' will uncover many web sites still in their
                     infancy.
                   </p>
-                  <h1>Hello</h1>
 
                   <div class="profile-edit-panel d-lg-none">
                     <button class="edit-btn join-group">Join Group</button>
                   </div>
                 </div>
               </div>
+              <div v-if="showModal">
+                <transition name="modal">
+                  <div class="modal-mask">
+                    <div class="modal-wrapper">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">Group Save</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true" @click="showModal = false">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <label for="phone">Enter Phone</label>
+                              <input type="text" class="form-control" id="phone"
+                                     aria-describedby="emailHelp" placeholder="Enter phone">
+                            </div>
+                            <!--<p>Modal body text goes here.</p>-->
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="edit-btn join-group" @click="save">Save Change</button>
+                            <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </transition>
+              </div>
+
               <div class="card" v-for="(title, index) in titles">
                 {{title.body}}
               </div>
@@ -94,6 +124,7 @@
   export default {
     data() {
       return {
+        showModal: false,
         titles: [],
         page: 1,
         sample_img: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg',
@@ -195,11 +226,30 @@
               console.log(err);
             });
         }, 500);
+      },
+      save() {
+        this.showModal = false
       }
     }
   }
 </script>
 
 <style>
+  .modal-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    display: table;
+    transition: opacity .3s ease;
+  }
+
+  .modal-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+  }
 
 </style>
