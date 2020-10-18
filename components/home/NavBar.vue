@@ -12,8 +12,9 @@
             <li class="">
               <nuxt-link :to="'/images/1/'" id="navbarDropdownMenuLink">Photos</nuxt-link>
             </li>
-            <li><a href="photos.html">Donations</a></li>
-            <li><a href="friends.html">Members</a></li>
+            <li class="">
+              <nuxt-link :to="'/members/1/'" id="navbarDropdownMenu">Members</nuxt-link>
+            </li>
           </ul>
         </nav>
       </div>

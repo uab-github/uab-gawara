@@ -2901,7 +2901,7 @@ textarea:focus {
 }
 
 .friends-section .content-box.friends-zone .friend-list-view:hover {
-  background-color: #dc4734;
+  background-color: #0054a6;
 }
 
 .friend-list-view {
@@ -2934,6 +2934,9 @@ textarea:focus {
 }
 
 .friend-list-view:hover .author a {
+  color: #fff;
+}
+.friend-list-view:hover .author {
   color: #fff;
 }
 
