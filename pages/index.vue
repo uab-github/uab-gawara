@@ -10,7 +10,7 @@
               <div class="col-lg-3 col-md-3">
                 <div class="profile-picture-box">
                   <figure class="profile-picture">
-                    <a href="profile.html">
+                    <a href="#">
                       <img
                         src="~/assets/images/profile/profile-1.jpg"
                         alt="profile picture"
@@ -60,7 +60,7 @@
                   </p>
 
                   <div class="profile-edit-panel d-lg-none">
-                    <button class="edit-btn join-group">Join Group</button>
+                    <button class="edit-btn join-group" @click="showModal = true">Join Group</button>
                   </div>
                 </div>
               </div>

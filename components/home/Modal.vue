@@ -1,7 +1,7 @@
 <template>
 
-  <transition name="modal">
-    <div class="modal-mask">
+  <!--<transition name="modal">-->
+    <div class="modal-mask" tabindex="-1" role="dialog">
       <div class="modal-wrapper">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -27,7 +27,7 @@
         </div>
       </div>
     </div>
-  </transition>
+  <!--</transition>-->
 </template>
 <script>
   import axios from '~/plugins/axios'
