@@ -6,7 +6,8 @@ export default {
     meta: [
       {charset: 'utf-8'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-      {hid: 'description', name: 'description', content: ''}
+      {hid: 'description', name: 'description', content: ''},
+      {name: 'apple-mobile-web-app-capable', content: "yes"},
     ],
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
@@ -43,7 +44,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    { src: '~/plugins/infiniteloading', ssr: false },
+    {src: '~/plugins/infiniteloading', ssr: false},
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
