@@ -8,7 +8,7 @@
             <div class="modal-header">
               <h5 class="modal-title">Group Save</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true" @click="showModal = false">&times;</span>
+                <span aria-hidden="true" @click="cancel">&times;</span>
               </button>
             </div>
             <div class="modal-body">
@@ -41,7 +41,7 @@
       }
     },
 
-    props: [ 'modalStatus' ],
+    props: ['modalStatus'],
     mounted() {
     },
 
@@ -53,12 +53,16 @@
         let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
         this.groupData = groupInfoData.data
       },
+      cancel() {
+        this.showModal = false;
+        this.modalStatus(false);
+      },
       save() {
-        if(navigator.userAgent.toLowerCase().indexOf("android") > -1){
+        if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
           window.location.href =
             'http://play.google.com/store/apps/details?id=PACKAGEURL';
         }
-        if(navigator.userAgent.toLowerCase().indexOf("iphone") > -1){
+        if (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) {
           window.location.href =
             // 'http://itunes.apple.com/lb/app/PACKAGEURL';
             'https://apps.apple.com/us/app/facebook/id284882215';
