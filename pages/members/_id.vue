@@ -48,18 +48,20 @@
                       <div class="content-box friends-zone">
                         <div class="row mt--20 friends-list">
                           <div class="col-lg-4 col-sm-6 recently request">
-                            <div class="friend-list-view" style="cursor: auto">
+                            <div class="friend-list-view" style="cursor: default">
                               <!-- profile picture end -->
                               <div class="profile-thumb">
-                                <a href="#">
+
                                   <figure class="profile-thumb-middle">
                                     <img src="~/assets/images/profile/profile-small-1.jpg" alt="profile picture">
                                   </figure>
-                                </a>
+
                               </div>
                               <!-- profile picture end -->
                               <div class="posted-author">
-                                <h6 class="author">Kate Midiltoin</h6>
+                                <h6 class="author" style="padding-top: 10px">Kate Midiltoin</h6>
+                                <h6 class="author" style="padding-top: 10px">Teacher</h6>
+                                <h6 class="author" style="padding-top: 10px">20-10-2020</h6>
                               </div>
                             </div>
                           </div>
@@ -75,7 +77,9 @@
                               </div>
                               <!-- profile picture end -->
                               <div class="posted-author">
-                                <h6 class="author">Kate Midiltoin</h6>
+                                <h6 class="author" style="padding-top: 10px">Kate Midiltoin</h6>
+                                <h6 class="author" style="padding-top: 10px">member</h6>
+                                <h6 class="author" style="padding-top: 10px">20-10-2020</h6>
                               </div>
                             </div>
                           </div>
