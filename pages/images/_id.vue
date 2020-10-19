@@ -114,7 +114,7 @@
   export default {
     data() {
       return {
-        sample_img: '',
+        sample_img: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg',
         groupData: {},
         images: [],
         showModal: false,
@@ -132,6 +132,13 @@
       $(".img-gallery").lightGallery({
         selector: ".gallery-selector",
         hash: false
+      });
+      var bgSelector = $(".bg-img");
+      bgSelector.each(function (index, elem) {
+        var element = $(elem),
+          bgSource = element.data('bg');
+        console.log("Hello");
+        element.css('background-image', 'url(' + bgSource + ')');
       });
     },
     created() {

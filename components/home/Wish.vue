@@ -73,10 +73,12 @@
   <div>
     <!-- post title start -->
     <div class="post-title d-flex align-items-center">
+      <img src="~/assets/images/message.png" alt="" style="width: 20px"/>
       <div class="posted-author">
         <h6 class="author">
           {{wish.member_name}}
         </h6>
+
         <span class="post-time">{{wish.created_date}}</span>
       </div>
     </div>

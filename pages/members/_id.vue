@@ -52,9 +52,9 @@
                               <!-- profile picture end -->
                               <div class="profile-thumb">
 
-                                  <figure class="profile-thumb-middle">
-                                    <img src="~/assets/images/profile/profile-small-1.jpg" alt="profile picture">
-                                  </figure>
+                                <figure class="profile-thumb-middle">
+                                  <img src="~/assets/images/profile/profile-small-1.jpg" alt="profile picture">
+                                </figure>
 
                               </div>
                               <!-- profile picture end -->
@@ -113,6 +113,7 @@
         sample_img: '',
         groupData: {},
         showModal: false,
+        sample_img: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg',
       }
     },
     components: {
@@ -120,6 +121,15 @@
     },
     created() {
       this.groupInfo();
+    },
+    mounted() {
+      var bgSelector = $(".bg-img");
+      bgSelector.each(function (index, elem) {
+        var element = $(elem),
+          bgSource = element.data('bg');
+        console.log("Hello");
+        element.css('background-image', 'url(' + bgSource + ')');
+      });
     },
 
     methods: {

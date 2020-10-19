@@ -4,6 +4,10 @@
     <main>
       <div class="main-wrapper">
         <div class="profile-banner-large bg-img" :data-bg="sample_img"></div>
+        <!--<div class="profile-banner-large bg-img">-->
+          <!--<img class="profile-banner-large bg-img" :src="sample_img" alt="">-->
+        <!--</div>-->
+
         <div class="profile-menu-area bg-white">
           <div class="container">
             <div class="row align-items-center">
@@ -106,10 +110,19 @@
         selector: ".gallery-selector",
         hash: false
       });
+
+      var bgSelector = $(".bg-img");
+      bgSelector.each(function (index, elem) {
+        var element = $(elem),
+          bgSource = element.data('bg');
+        console.log("Hello");
+        element.css('background-image', 'url(' + bgSource + ')');
+      });
     },
     created() {
       this.getWishes();
       this.groupInfo();
+
     },
     methods: {
       async getWishes() {
