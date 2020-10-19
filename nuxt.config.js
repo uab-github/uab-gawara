@@ -57,6 +57,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
+    'nuxt-sweetalert2'
   ],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
