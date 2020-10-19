@@ -22,21 +22,24 @@
               <navbar></navbar>
               <div class="col-lg-2 col-md-3 d-none d-md-block">
                 <div class="profile-edit-panel">
-                  <button class="edit-btn join-group">Join Group</button>
+                  <button class="edit-btn join-group" @click="showModal = true">Join Group</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <div v-if="showModal">
+          <modal :modal-status="modalStatus"></modal>
+        </div>
         <div class="container">
           <div class="row">
             <div class="col-lg-3 order-2 order-lg-1">
-              <aside class="widget-area profile-sidebar">
+              <aside class="widget-area profile-sidebar" style="margin-top: 50px">
                 <!-- widget single item start -->
                 <group-info></group-info>
                 <!-- widget single item end -->
                 <!-- widget single item start -->
-                <!--<images></images>-->
+                <images></images>
               </aside>
             </div>
             <div class="col-lg-9 order-1 order-lg-2">
@@ -47,7 +50,7 @@
                     <div class="content-box">
                       <div class="content-body">
                         <div class="row mt--30 photo-filter">
-                          <div class="col-sm-6 col-md-6" v-for="image in images" >
+                          <div class="col-sm-6 col-md-6" v-for="image in images">
                             <div class="card" style="padding: 0;margin-top: 20px">
                               <div class="post-thumb-gallery">
                                 <figure class="post-thumb img-popup">
@@ -105,7 +108,7 @@
   import GroupInfo from "../../components/home/GroupInfo";
   import Images from "../../components/home/Images";
   import Wish from "../../components/home/Wish";
-
+  import Modal from "../../components/home/Modal";
 
 
   export default {
@@ -114,10 +117,11 @@
         sample_img: '',
         groupData: {},
         images: [],
+        showModal: false,
       }
     },
     components: {
-      MainHeader, Navbar, GroupInfo, Images, Wish
+      MainHeader, Navbar, GroupInfo, Images, Wish, Modal
     },
     mounted() {
       // this.getImages();
@@ -167,6 +171,13 @@
         });
         // this.sample_img = this.images[1].image_url;
       },
+      save() {
+        this.showModal = false
+      },
+      modalStatus(request) {
+        this.showModal = request;
+        console.log("Hello12312323123123213");
+      }
 
     }
   }

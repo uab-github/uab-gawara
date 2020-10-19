@@ -60,7 +60,7 @@
                   </p>
                 </div>
                 <div class="profile-edit-panel d-lg-none">
-                  <button class="edit-btn join-group">Join Group</button>
+                  <button class="edit-btn join-group" @click="showModal = true">Join Group</button>
                 </div>
               </div>
               <!--//wish card-->

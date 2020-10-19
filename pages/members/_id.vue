@@ -22,7 +22,7 @@
               <navbar></navbar>
               <div class="col-lg-2 col-md-3 d-none d-md-block">
                 <div class="profile-edit-panel">
-                  <button class="edit-btn join-group">Join Group</button>
+                  <button class="edit-btn join-group" @click="showModal = true">Join Group</button>
                 </div>
               </div>
             </div>
@@ -31,11 +31,14 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-3 order-2 order-lg-1">
-              <aside class="widget-area profile-sidebar">
+              <aside class="widget-area profile-sidebar" style="margin-top: 50px">
                 <!-- widget single item start -->
                 <group-info></group-info>
-                <!--<images></images>-->
+                <images></images>
               </aside>
+            </div>
+            <div v-if="showModal">
+              <modal :modal-status="modalStatus"></modal>
             </div>
             <div class="col-lg-9 order-1 order-lg-2">
               <div class="friends-section mt-20">
@@ -45,7 +48,7 @@
                       <div class="content-box friends-zone">
                         <div class="row mt--20 friends-list">
                           <div class="col-lg-4 col-sm-6 recently request">
-                            <div class="friend-list-view">
+                            <div class="friend-list-view" style="cursor: auto">
                               <!-- profile picture end -->
                               <div class="profile-thumb">
                                 <a href="#">
@@ -82,7 +85,6 @@
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -98,6 +100,7 @@
   import GroupInfo from "../../components/home/GroupInfo";
   import Images from "../../components/home/Images";
   import Wish from "../../components/home/Wish";
+  import Modal from "../../components/home/Modal";
 
 
   export default {
@@ -105,10 +108,11 @@
       return {
         sample_img: '',
         groupData: {},
+        showModal: false,
       }
     },
     components: {
-      MainHeader, Navbar, GroupInfo, Images, Wish
+      MainHeader, Navbar, GroupInfo, Images, Wish, Modal
     },
     created() {
       this.groupInfo();
@@ -120,6 +124,13 @@
         let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
         this.groupData = groupInfoData.data
       },
+      save() {
+        this.showModal = false
+      },
+      modalStatus(request) {
+        this.showModal = request;
+        console.log("Hello12312323123123213");
+      }
     }
   }
 </script>

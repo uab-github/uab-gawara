@@ -67,8 +67,8 @@
             // 'http://itunes.apple.com/lb/app/PACKAGEURL';
             'https://apps.apple.com/us/app/facebook/id284882215';
         }
-        this.$swal('Good job!',
-          'You clicked the button!',
+        this.$swal('Thank',
+          'Please login your uab Pay.',
           'success');
         this.showModal = false;
         this.modalStatus(false);
