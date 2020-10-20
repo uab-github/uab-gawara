@@ -15,7 +15,7 @@
             <div class="form-group">
               <label for="phone">Please Type Phone Number (optional)</label>
               <input type="number" class="form-control" id="phone"
-                     aria-describedby="emailHelp" placeholder="094211990">
+                     aria-describedby="emailHelp" placeholder="09*******">
             </div>
             <!--<p>Modal body text goes here.</p>-->
           </div>
