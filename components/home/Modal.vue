@@ -13,14 +13,14 @@
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label for="phone">Please Type Phone Number</label>
+              <label for="phone">Please Type Phone Number (optional)</label>
               <input type="number" class="form-control" id="phone"
                      aria-describedby="emailHelp" placeholder="094211990">
             </div>
             <!--<p>Modal body text goes here.</p>-->
           </div>
           <div class="modal-footer">
-            <button type="button" class="edit-btn join-group" @click="save">Save Change</button>
+            <button type="button" class="edit-btn join-group" @click="save">Go to uabPay</button>
             <!--<button type="button" class="btn btn-primary">Save changes</button>-->
           </div>
         </div>
