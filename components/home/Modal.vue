@@ -13,9 +13,9 @@
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label for="phone">Enter Phone</label>
-              <input type="text" class="form-control" id="phone"
-                     aria-describedby="emailHelp" placeholder="Enter phone">
+              <label for="phone">Please Type Phone Number</label>
+              <input type="number" class="form-control" id="phone"
+                     aria-describedby="emailHelp" placeholder="094211990">
             </div>
             <!--<p>Modal body text goes here.</p>-->
           </div>
@@ -69,7 +69,7 @@
             'https://apps.apple.com/us/app/uabpay/id1496595220';
         }
         this.$swal('Thank',
-          'Please login your uab Pay.',
+          'Please login your uabPay.',
           'success');
         this.showModal = false;
         this.modalStatus(false);

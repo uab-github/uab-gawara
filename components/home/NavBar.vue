@@ -5,14 +5,14 @@
       <div class="main-menu-inner header-top-navigation">
         <nav>
           <ul class="main-menu">
-            <li class="">
+            <li @click="setActive('id')" :class="{ active: isActive('id') }">
               <nuxt-link :to="'/1/'" id="navbarDropdownMenuLink2">Home
               </nuxt-link>
             </li>
-            <li class="">
+            <li @click="setActive('images-id')" :class="{ active: isActive('images-id') }">
               <nuxt-link :to="'/images/1/'" id="navbarDropdownMenuLink">Photos</nuxt-link>
             </li>
-            <li class="">
+            <li @click="setActive('members-id')" :class="{ active: isActive('members-id') }">
               <nuxt-link :to="'/members/1/'" id="navbarDropdownMenu">Members</nuxt-link>
             </li>
           </ul>
@@ -22,7 +22,33 @@
   </div>
 
 </template>
+<script>
+  export default {
+    data() {
+      return {
+        activeItem: "id",
+      };
+    },
+    mounted() {
+    },
+    created() {
+      console.log(this.$route.name);
 
+      this.setActive(
+        this.$route.name !== undefined ? this.$route.name : "id"
+      );
+      // console.log(this.$route.params.id);
+    },
+    methods: {
+      isActive: function (menuItem) {
+        return this.activeItem === menuItem;
+      },
+      setActive: function (menuItem) {
+        this.activeItem = menuItem;
+      }
+    },
+  };
+</script>
 <style>
 
 </style>

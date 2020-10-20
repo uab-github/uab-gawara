@@ -126,6 +126,7 @@
     },
     methods: {
       async getWishes() {
+        console.log(this.$route.params.id);
         // let wishData = await axios.get(`/2752cadf-2f86-4ba9-b241-a51ddf761318`);
         let wishData = await axios.get(`/a5d012ff-5df7-4d7a-8054-fdb9178816e9`);
         this.wishes = wishData.data.wishes
