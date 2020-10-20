@@ -3,7 +3,7 @@
   <!--<div class="card">-->
   <!--&lt;!&ndash; post title start &ndash;&gt;-->
   <!--<div class="post-title d-flex align-items-center">-->
-
+  <!--<img src="~/assets/images/message.png" alt="" style="width: 20px"/>-->
   <!--<div class="posted-author">-->
   <!--<h6 class="author">-->
   <!--Jon Wileyam-->
@@ -22,6 +22,7 @@
   <!--&lt;!&ndash; thanks start &ndash;&gt;-->
   <!--<div class="card thanks-card">-->
   <!--<div class="post-title d-flex align-items-center">-->
+  <!--<img src="~/assets/images/message.png" alt="" style="width: 20px"/>-->
   <!--<div class="posted-author">-->
   <!--<h6 class="author">-->
   <!--Daw Khin Ma Ma <span class="badge badge-primary">Senior</span>-->
@@ -66,6 +67,7 @@
   <!--use Lorem Ipsum as their default model text, and a search-->
   <!--for-->
   <!--</p>-->
+  <!--</div>-->
   <!--</div>-->
   <!--</div>-->
   <!--</div>-->
@@ -116,7 +118,6 @@
       </div>
     </div>
   </div>
-  <!--</div>-->
 </template>
 <script>
   export default {
