@@ -128,11 +128,13 @@
       async getWishes() {
         console.log(this.$route.params.id);
         // let wishData = await axios.get(`/2752cadf-2f86-4ba9-b241-a51ddf761318`);
-        let wishData = await axios.get(`/a5d012ff-5df7-4d7a-8054-fdb9178816e9`);
+        // let wishData = await axios.get(`/a5d012ff-5df7-4d7a-8054-fdb9178816e9`);
+        let wishData = await axios.get(`/Wallet_GetWishlist?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg&page=1&rows=1`);
         this.wishes = wishData.data.wishes
       },
       async groupInfo() {
-        let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
+        // let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
+        let groupInfoData = await axios.get(`/Wallet_GetGroupInfo?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg`);
         this.groupData = groupInfoData.data
       },
       save() {
