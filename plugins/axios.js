@@ -7,6 +7,6 @@ export default axios.create({
       'Access-Control-Allow-Origin': "*"
     }
   },
-  // baseURL: 'https://run.mocky.io/v3'
-  baseURL: 'http://webapi.uatuab.com:81/API/Wallet'
+  baseURL: 'https://run.mocky.io/v3'
+  // baseURL: 'http://webapi.uatuab.com:81/API/Wallet'
 })
