@@ -5,15 +5,15 @@
       <div class="main-menu-inner header-top-navigation">
         <nav>
           <ul class="main-menu">
-            <li @click="setActive('id')" :class="{ active: isActive('id') }">
-              <nuxt-link :to="'/'+this.$route.params.id" id="navbarDropdownMenuLink2">Home
+            <li @click="setActive('group-id')" :class="{ active: isActive('group-id') }">
+              <nuxt-link :to="'/group/'+this.$route.params.id" id="navbarDropdownMenuLink2">Home
               </nuxt-link>
             </li>
-            <li @click="setActive('images-id')" :class="{ active: isActive('images-id') }">
-              <nuxt-link :to="'/images/'+this.$route.params.id" id="navbarDropdownMenuLink">Photos</nuxt-link>
+            <li @click="setActive('group-images-id')" :class="{ active: isActive('group-images-id') }">
+              <nuxt-link :to="'/group/images/'+this.$route.params.id" id="navbarDropdownMenuLink">Photos</nuxt-link>
             </li>
-            <li @click="setActive('members-id')" :class="{ active: isActive('members-id') }">
-              <nuxt-link :to="'/members/'+this.$route.params.id" id="navbarDropdownMenu">Members</nuxt-link>
+            <li @click="setActive('group-members-id')" :class="{ active: isActive('group-members-id') }">
+              <nuxt-link :to="'/group/members/'+this.$route.params.id" id="navbarDropdownMenu">Members</nuxt-link>
             </li>
           </ul>
         </nav>
@@ -26,7 +26,7 @@
   export default {
     data() {
       return {
-        activeItem: "id",
+        activeItem: "group-id",
         groupId:this.$route.params.id
       };
     },
