@@ -34,7 +34,18 @@
               <aside class="widget-area profile-sidebar" style="margin-top: 50px">
                 <!-- widget single item start -->
                 <group-info></group-info>
-                <images></images>
+
+                <div class="card widget-item">
+                  <h4 class="widget-title">Sweets Memories</h4>
+                  <div class="widget-body">
+                    <div class="sweet-galley img-gallery">
+                      <div class="row row-5">
+                        <images v-bind:image="image" v-for="image in images"></images>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </aside>
             </div>
             <div v-if="showModal">
@@ -66,7 +77,7 @@
                             </div>
                           </div>
                           <div class="col-lg-4 col-sm-6 recently request">
-                            <div class="friend-list-view">
+                            <div class="friend-list-view" style="cursor: default">
                               <!-- profile picture end -->
                               <div class="profile-thumb">
                                 <a href="#">
@@ -111,6 +122,7 @@
     data() {
       return {
         // sample_img: '',
+        images: [],
         groupData: {},
         showModal: false,
         sample_img: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg',
@@ -121,6 +133,7 @@
     },
     created() {
       this.groupInfo();
+      this.getImages();
     },
     mounted() {
       var bgSelector = $(".bg-img");
@@ -133,7 +146,18 @@
     },
 
     methods: {
+      async getImages() {
+        let groupInfoData = await axios.get(`/9b1a08b6-7217-4a38-ac57-5fe3a66d536c`);
+        this.images = groupInfoData.data.data;
+        $(".img-popup").lightGallery();
 
+        // light gallery images
+        $(".img-gallery").lightGallery({
+          selector: ".gallery-selector",
+          hash: false
+        });
+        // this.sample_img = this.images[1].image_url;
+      },
       async groupInfo() {
         let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
         this.groupData = groupInfoData.data
