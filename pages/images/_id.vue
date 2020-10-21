@@ -3,7 +3,7 @@
     <main-header></main-header>
     <main>
       <div class="main-wrapper">
-        <div class="profile-banner-large bg-img" :data-bg="sample_img"></div>
+        <div class="profile-banner-large bg-img" :data-bg="groupData.group_cover_image_url"></div>
         <div class="profile-menu-area bg-white">
           <div class="container">
             <div class="row align-items-center">

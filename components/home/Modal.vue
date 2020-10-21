@@ -14,7 +14,7 @@
           <div class="modal-body">
             <div class="form-group">
               <label for="phone">Please Type Phone Number (optional)</label>
-              <input type="number" class="form-control" id="phone"
+              <input type="number" class="form-control" id="phone" v-model="phoneNumber"
                      aria-describedby="emailHelp" placeholder="09*******">
             </div>
             <!--<p>Modal body text goes here.</p>-->
@@ -37,6 +37,7 @@
     data() {
       return {
         groupData: {},
+        phoneNumber: '',
         showModal: false
       }
     },
@@ -49,15 +50,25 @@
       // this.groupInfo();
     },
     methods: {
-      async groupInfo() {
-        let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
-        this.groupData = groupInfoData.data
-      },
+      // async groupInfo() {
+      //   let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
+      //   this.groupData = groupInfoData.data
+      // },
       cancel() {
         this.showModal = false;
         this.modalStatus(false);
       },
-      save() {
+      async save() {
+
+        if (this.phoneNumber != '') {
+          let response = await axios.post(`/Wallet_SendJoinRequest?GroupID=${this.$route.params.id}&PhoneNo=${this.phoneNumber}`, '').catch(function (error) {
+            if (error.response) {
+              console.log("Error");
+              console.log(error.response.data.message);
+            }
+          });
+        }
+
         if (navigator.userAgent.toLowerCase().indexOf("android") > -1) {
           window.location.href =
             // 'http://play.google.com/store/apps/details?id=PACKAGEURL';
