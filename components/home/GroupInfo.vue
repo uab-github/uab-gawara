@@ -1,22 +1,22 @@
 <template>
   <div class="card widget-item">
     <h4 class="widget-title" style="margin-bottom: 20px">
-      {{groupData.group_name}}
+      {{group.group_title}}
     </h4>
     <div class="widget-body">
       <div class="about-author">
         <ul class="author-into-list">
           <li>
-            <a href="#"><i class="bi bi-pin-man"></i>{{groupData.organizer_name}}</a>
+            <a href="#"><i class="bi bi-pin-man"></i>{{group.organizer_name}}</a>
           </li>
           <li>
             <a href="#"
-            ><i class="bi bi-pin-man"></i>{{groupData.group_member}} members</a
+            ><i class="bi bi-pin-man"></i>{{group.group_member}} members</a
             >
           </li>
           <li>
             <a href="#"
-            ><i class="bi bi-pin-man"></i>{{groupData.donation_last_date}}</a
+            ><i class="bi bi-pin-man"></i>{{group.donation_last_date}}</a
             >
           </li>
         </ul>
@@ -36,18 +36,15 @@
       }
     },
 
-    // props: ['group'],
+    props: ['group'],
     mounted() {
     },
 
     created() {
-      this.groupInfo();
+
     },
     methods: {
-      async groupInfo() {
-        let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
-        this.groupData = groupInfoData.data
-      },
+
     }
 
   }

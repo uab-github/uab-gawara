@@ -33,7 +33,7 @@
             <div class="col-lg-3 order-2 order-lg-1">
               <aside class="widget-area profile-sidebar" style="margin-top: 50px">
                 <!-- widget single item start -->
-                <group-info></group-info>
+                <group-info v-bind:group="groupData"></group-info>
 
                 <div class="card widget-item">
                   <h4 class="widget-title">Sweets Memories</h4>
@@ -58,7 +58,7 @@
                     <div class="col-12">
                       <div class="content-box friends-zone">
                         <div class="row mt--20 friends-list">
-                          <div class="col-lg-4 col-sm-6 recently request">
+                          <div class="col-lg-4 col-sm-6 recently request" v-for="member in members">
                             <div class="friend-list-view" style="cursor: default">
                               <!-- profile picture end -->
                               <div class="profile-thumb">
@@ -70,30 +70,30 @@
                               </div>
                               <!-- profile picture end -->
                               <div class="posted-author">
-                                <h6 class="author" style="padding-top: 10px">Kate Midiltoin</h6>
-                                <h6 class="author" style="padding-top: 10px">Teacher</h6>
-                                <h6 class="author" style="padding-top: 10px">20-10-2020</h6>
+                                <h6 class="author" style="padding-top: 10px">{{member.name}}</h6>
+                                <h6 class="author" style="padding-top: 10px">{{member.role}}</h6>
+                                <h6 class="author" style="padding-top: 10px">{{member.created_date}}</h6>
                               </div>
                             </div>
                           </div>
-                          <div class="col-lg-4 col-sm-6 recently request">
-                            <div class="friend-list-view" style="cursor: default">
-                              <!-- profile picture end -->
-                              <div class="profile-thumb">
-                                <a href="#">
-                                  <figure class="profile-thumb-middle">
-                                    <img src="~/assets/images/profile/profile-small-1.jpg" alt="profile picture">
-                                  </figure>
-                                </a>
-                              </div>
-                              <!-- profile picture end -->
-                              <div class="posted-author">
-                                <h6 class="author" style="padding-top: 10px">Kate Midiltoin</h6>
-                                <h6 class="author" style="padding-top: 10px">member</h6>
-                                <h6 class="author" style="padding-top: 10px">20-10-2020</h6>
-                              </div>
-                            </div>
-                          </div>
+                          <!--<div class="col-lg-4 col-sm-6 recently request">-->
+                            <!--<div class="friend-list-view" style="cursor: default">-->
+                              <!--&lt;!&ndash; profile picture end &ndash;&gt;-->
+                              <!--<div class="profile-thumb">-->
+                                <!--<a href="#">-->
+                                  <!--<figure class="profile-thumb-middle">-->
+                                    <!--<img src="~/assets/images/profile/profile-small-1.jpg" alt="profile picture">-->
+                                  <!--</figure>-->
+                                <!--</a>-->
+                              <!--</div>-->
+                              <!--&lt;!&ndash; profile picture end &ndash;&gt;-->
+                              <!--<div class="posted-author">-->
+                                <!--<h6 class="author" style="padding-top: 10px">Kate Midiltoin</h6>-->
+                                <!--<h6 class="author" style="padding-top: 10px">member</h6>-->
+                                <!--<h6 class="author" style="padding-top: 10px">20-10-2020</h6>-->
+                              <!--</div>-->
+                            <!--</div>-->
+                          <!--</div>-->
                         </div>
                       </div>
                     </div>
@@ -123,6 +123,7 @@
       return {
         // sample_img: '',
         images: [],
+        members: [],
         groupData: {},
         showModal: false,
         sample_img: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg',
@@ -134,6 +135,7 @@
     created() {
       this.groupInfo();
       this.getImages();
+      this.getMembers();
     },
     mounted() {
       var bgSelector = $(".bg-img");
@@ -147,8 +149,8 @@
 
     methods: {
       async getImages() {
-        let groupInfoData = await axios.get(`/9b1a08b6-7217-4a38-ac57-5fe3a66d536c`);
-        this.images = groupInfoData.data.data;
+        let images = await axios.get(`/Wallet_GetGroupImage?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg`);
+        this.images = images.data.data;
         $(".img-popup").lightGallery();
 
         // light gallery images
@@ -156,11 +158,14 @@
           selector: ".gallery-selector",
           hash: false
         });
-        // this.sample_img = this.images[1].image_url;
       },
       async groupInfo() {
-        let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
+        let groupInfoData = await axios.get(`/Wallet_GetGroupInfo?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg`);
         this.groupData = groupInfoData.data
+      },
+      async getMembers() {
+        let members = await axios.get(`/Wallet_Getmemberlist?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg&page=1&rows=1`);
+        this.members = members.data.members
       },
       save() {
         this.showModal = false

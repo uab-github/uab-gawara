@@ -37,7 +37,7 @@
             <div class="col-lg-3 order-2 order-lg-1">
               <aside class="widget-area profile-sidebar" style="margin-top: 50px">
                 <!-- widget single item start -->
-                <group-info></group-info>
+                <group-info v-bind:group="groupData"></group-info>
 
                 <div class="card widget-item">
                   <h4 class="widget-title">Sweets Memories</h4>
@@ -62,7 +62,7 @@
                 <div class="post-title d-flex align-items-center" style="margin-left:-20px">
                   <div class="posted-author">
                     <h4 class="author" style="font-size: 18px;font-weight: bold;">
-                      "{{groupData.group_name}}" အဖွဲ့ရည်ရွယ်ချက်
+                      "{{groupData.group_title}}" အဖွဲ့ရည်ရွယ်ချက်
                     </h4>
                   </div>
                 </div>
@@ -138,18 +138,22 @@
       async getWishes() {
         console.log(this.$route.params.id);
         // let wishData = await axios.get(`/2752cadf-2f86-4ba9-b241-a51ddf761318`);
-        let wishData = await axios.get(`/a5d012ff-5df7-4d7a-8054-fdb9178816e9`);
-        // let wishData = await axios.get(`/Wallet_GetWishlist?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg&page=1&rows=1`);
+        // let wishData = await axios.get(`/a5d012ff-5df7-4d7a-8054-fdb9178816e9`);
+        let wishData = await axios.get(`/Wallet_GetWishlist?GroupID=${this.$route.params.id}&page&page=1&rows=1`);
         this.wishes = wishData.data.wishes
       },
       async groupInfo() {
-        let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
-        // let groupInfoData = await axios.get(`/Wallet_GetGroupInfo?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg`);
-        this.groupData = groupInfoData.data
+        // let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
+        let groupInfoData = await axios.get(`/Wallet_GetGroupInfo?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg`);
+        this.groupData = groupInfoData.data;
+        console.log("this.groupData");
+        console.log(this.groupData);
+        console.log(typeof this.groupData);
       },
       async getImages() {
-        let groupInfoData = await axios.get(`/9b1a08b6-7217-4a38-ac57-5fe3a66d536c`);
-        this.images = groupInfoData.data.data;
+        // let groupInfoData = await axios.get(`/9b1a08b6-7217-4a38-ac57-5fe3a66d536c`);
+        let images = await axios.get(`/Wallet_GetGroupImage?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg`);
+        this.images = images.data.data;
         $(".img-popup").lightGallery();
 
         // light gallery images

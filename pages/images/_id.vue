@@ -36,7 +36,7 @@
             <div class="col-lg-3 order-2 order-lg-1">
               <aside class="widget-area profile-sidebar" style="margin-top: 50px">
                 <!-- widget single item start -->
-                <group-info></group-info>
+                <group-info v-bind:group="groupData"></group-info>
                 <div class="card widget-item">
                   <h4 class="widget-title">Sweets Memories</h4>
                   <div class="widget-body">
@@ -57,7 +57,7 @@
                     <div class="content-box">
                       <div class="content-body">
                         <div class="row mt--30 photo-filter">
-                          <div class="col-sm-6 col-md-6" v-for="image in images">
+                          <div class="col-sm-6 col-md-6" v-for="image in images" v-if="images.length!==0">
                             <div class="card" style="padding: 0;margin-top: 20px">
                               <div class="post-thumb-gallery">
                                 <figure class="post-thumb img-popup">
@@ -152,15 +152,15 @@
     created() {
       this.groupInfo();
       this.getImages();
-      // this.getImagesSweet();
+      this.getImagesSweet();
 
 
     },
     async fetch() {
 
-      let groupInfoData = await axios.get(`/9b1a08b6-7217-4a38-ac57-5fe3a66d536c`);
-      // let groupInfoData = await axios.get(`/Wallet_GetGroupImage?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg`);
-      this.images = groupInfoData.data.data;
+      // let images = await axios.get(`/9b1a08b6-7217-4a38-ac57-5fe3a66d536c`);
+      let images = await axios.get(`/Wallet_GetGroupImage?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg`);
+      this.images = images.data.data;
 
       $(".img-popup").lightGallery();
 
@@ -173,14 +173,14 @@
     methods: {
 
       async groupInfo() {
-        let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
-        // let groupInfoData = await axios.get(`/Wallet_GetGroupImage?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg`);
+        // let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
+        let groupInfoData = await axios.get(`/Wallet_GetGroupInfo?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg`);
         this.groupData = groupInfoData.data
       },
       async getImages() {
-        let groupInfoData = await axios.get(`/9b1a08b6-7217-4a38-ac57-5fe3a66d536c`);
-        // let groupInfoData = await axios.get(`/Wallet_GetGroupInfo?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg`);
-        this.images = groupInfoData.data.data;
+        // let groupInfoData = await axios.get(`/9b1a08b6-7217-4a38-ac57-5fe3a66d536c`);
+        let images = await axios.get(`/Wallet_GetGroupImage?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg`);
+        this.images = images.data.data;
         $(".img-popup").lightGallery();
 
         // light gallery images
@@ -191,8 +191,8 @@
         // this.sample_img = this.images[1].image_url;
       },
       async getImagesSweet() {
-        let groupInfoData = await axios.get(`/9b1a08b6-7217-4a38-ac57-5fe3a66d536c`);
-        this.images = groupInfoData.data.data;
+        let images = await axios.get(`/Wallet_GetGroupImage?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg`);
+        this.images = images.data.data;
         $(".img-popup").lightGallery();
 
         // light gallery images

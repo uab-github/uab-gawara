@@ -1,6 +1,7 @@
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   target: 'server',
+
   head: {
     title: 'uab Garawa',
     meta: [
@@ -67,6 +68,7 @@ export default {
     'bootstrap-vue/nuxt',
     'nuxt-sweetalert2'
   ],
+
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {vendor: ['/js/main.js'],}
