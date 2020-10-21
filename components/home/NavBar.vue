@@ -6,14 +6,14 @@
         <nav>
           <ul class="main-menu">
             <li @click="setActive('id')" :class="{ active: isActive('id') }">
-              <nuxt-link :to="'/1/'" id="navbarDropdownMenuLink2">Home
+              <nuxt-link :to="'/'+this.$route.params.id" id="navbarDropdownMenuLink2">Home
               </nuxt-link>
             </li>
             <li @click="setActive('images-id')" :class="{ active: isActive('images-id') }">
-              <nuxt-link :to="'/images/1/'" id="navbarDropdownMenuLink">Photos</nuxt-link>
+              <nuxt-link :to="'/images/'+this.$route.params.id" id="navbarDropdownMenuLink">Photos</nuxt-link>
             </li>
             <li @click="setActive('members-id')" :class="{ active: isActive('members-id') }">
-              <nuxt-link :to="'/members/1/'" id="navbarDropdownMenu">Members</nuxt-link>
+              <nuxt-link :to="'/members/'+this.$route.params.id" id="navbarDropdownMenu">Members</nuxt-link>
             </li>
           </ul>
         </nav>
@@ -27,6 +27,7 @@
     data() {
       return {
         activeItem: "id",
+        groupId:this.$route.params.id
       };
     },
     mounted() {

@@ -3,7 +3,7 @@
     <main-header></main-header>
     <main>
       <div class="main-wrapper">
-        <div class="profile-banner-large bg-img" :data-bg="sample_img"></div>
+        <div class="profile-banner-large bg-img" :data-bg="groupData.group_cover_image_url"></div>
         <!--<div class="profile-banner-large bg-img">-->
         <!--<img class="profile-banner-large bg-img" :src="sample_img" alt="">-->
         <!--</div>-->
@@ -139,12 +139,12 @@
         console.log(this.$route.params.id);
         // let wishData = await axios.get(`/2752cadf-2f86-4ba9-b241-a51ddf761318`);
         // let wishData = await axios.get(`/a5d012ff-5df7-4d7a-8054-fdb9178816e9`);
-        let wishData = await axios.get(`/Wallet_GetWishlist?GroupID=${this.$route.params.id}&page&page=1&rows=1`);
+        let wishData = await axios.get(`/Wallet_GetWishlist?GroupID=${this.$route.params.id}&page&page=1&rows=100`);
         this.wishes = wishData.data.wishes
       },
       async groupInfo() {
         // let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
-        let groupInfoData = await axios.get(`/Wallet_GetGroupInfo?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg`);
+        let groupInfoData = await axios.get(`/Wallet_GetGroupInfo?GroupID=${this.$route.params.id}`);
         this.groupData = groupInfoData.data;
         console.log("this.groupData");
         console.log(this.groupData);
@@ -152,7 +152,7 @@
       },
       async getImages() {
         // let groupInfoData = await axios.get(`/9b1a08b6-7217-4a38-ac57-5fe3a66d536c`);
-        let images = await axios.get(`/Wallet_GetGroupImage?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg`);
+        let images = await axios.get(`/Wallet_GetGroupImage?GroupID=${this.$route.params.id}`);
         this.images = images.data.data;
         $(".img-popup").lightGallery();
 
@@ -168,7 +168,6 @@
       },
       modalStatus(request) {
         this.showModal = request;
-        console.log("Hello12312323123123213");
       }
 
     }

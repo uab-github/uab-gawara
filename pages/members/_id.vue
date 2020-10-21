@@ -149,7 +149,7 @@
 
     methods: {
       async getImages() {
-        let images = await axios.get(`/Wallet_GetGroupImage?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg`);
+        let images = await axios.get(`/Wallet_GetGroupImage?GroupID=${this.$route.params.id}`);
         this.images = images.data.data;
         $(".img-popup").lightGallery();
 
@@ -160,11 +160,11 @@
         });
       },
       async groupInfo() {
-        let groupInfoData = await axios.get(`/Wallet_GetGroupInfo?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg`);
+        let groupInfoData = await axios.get(`/Wallet_GetGroupInfo?GroupID=${this.$route.params.id}`);
         this.groupData = groupInfoData.data
       },
       async getMembers() {
-        let members = await axios.get(`/Wallet_Getmemberlist?GroupID=49cae29b1c465ae1fa7320eeaa221d80d6659bf8228afefa981f7eb84935acebfg&page=1&rows=1`);
+        let members = await axios.get(`/Wallet_Getmemberlist?GroupID=${this.$route.params.id}&page=1&rows=100`);
         this.members = members.data.members
       },
       save() {
