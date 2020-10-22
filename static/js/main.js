@@ -23,16 +23,16 @@
 	});
 
 	//Background Image JS start
-  $(window).on('load', function () {
-    var bgSelector = $(".bg-img");
-    bgSelector.each(function (index, elem) {
-      var element = $(elem),
-        bgSource = element.data('bg');
-      console.log("Hello");
-      console.log(bgSource);
-      element.css('background-image', 'url(' + bgSource + ')');
-    });
-  });
+  // $(window).on('load', function () {
+  //   var bgSelector = $(".bg-img");
+  //   bgSelector.each(function (index, elem) {
+  //     var element = $(elem),
+  //       bgSource = element.data('bg');
+  //     console.log("Hello");
+  //     console.log(bgSource);
+  //     element.css('background-image', 'url(' + bgSource + ')');
+  //   });
+  // });
 
 
 

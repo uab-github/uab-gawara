@@ -3,7 +3,8 @@
     <main-header></main-header>
     <main>
       <div class="main-wrapper">
-        <div class="profile-banner-large bg-img" :data-bg="groupData.group_cover_image_url"></div>
+        <div class="profile-banner-large bg-img" :style="{ backgroundImage: 'url(' + bgImage + ')' }"></div>
+        <!--<div class="profile-banner-large bg-img" :data-bg="groupData.group_cover_image_url"></div>-->
         <div class="profile-menu-area bg-white">
           <div class="container">
             <div class="row align-items-center">
@@ -57,6 +58,7 @@
                     <div class="content-box">
                       <div class="content-body">
                         <div class="row mt--30 photo-filter">
+
                           <div class="col-sm-6 col-md-6" v-for="image in images" v-if="images.length!==0">
                             <div class="card" style="padding: 0;margin-top: 20px">
                               <div class="post-thumb-gallery">
@@ -75,6 +77,10 @@
                               </div>
                             </div>
                           </div>
+                          <div class="col-md-6" style="padding-top: 17px" v-else>
+                            <h4>no Images</h4>
+                          </div>
+
                           <!--<div class="col-sm-6 col-md-6">-->
                           <!--<div class="card" style="padding: 0;margin-top: 20px">-->
                           <!--<div class="post-thumb-gallery">-->
@@ -122,6 +128,7 @@
     data() {
       return {
         sample_img: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg',
+        bgImage: "",
         groupData: {},
         images: [],
         showModal: false,
@@ -141,19 +148,19 @@
         selector: ".gallery-selector",
         hash: false
       });
-      var bgSelector = $(".bg-img");
-      bgSelector.each(function (index, elem) {
-        var element = $(elem),
-          bgSource = element.data('bg');
-        console.log("Hello");
-        element.css('background-image', 'url(' + bgSource + ')');
-      });
+      // var bgSelector = $(".bg-img");
+      // bgSelector.each(function (index, elem) {
+      //   var element = $(elem),
+      //     bgSource = element.data('bg');
+      //   console.log("Hello");
+      //   element.css('background-image', 'url(' + bgSource + ')');
+      // });
     },
     created() {
       this.groupInfo();
       this.getImages();
       this.getImagesSweet();
-
+      this.sample_img=this.groupData.group_cover_image_url
 
     },
     async fetch() {
@@ -175,7 +182,8 @@
       async groupInfo() {
         // let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
         let groupInfoData = await axios.get(`/Wallet_GetGroupInfo?GroupID=${this.$route.params.id}`);
-        this.groupData = groupInfoData.data
+        this.groupData = groupInfoData.data;
+        this.bgImage = "'" + this.groupData.group_cover_image_url + "'";
       },
       async getImages() {
         // let groupInfoData = await axios.get(`/9b1a08b6-7217-4a38-ac57-5fe3a66d536c`);

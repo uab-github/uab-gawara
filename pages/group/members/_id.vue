@@ -3,7 +3,7 @@
     <main-header></main-header>
     <main>
       <div class="main-wrapper">
-        <div class="profile-banner-large bg-img" :data-bg="groupData.group_cover_image_url"></div>
+        <div class="profile-banner-large bg-img" :style="{ backgroundImage: 'url(' + bgImage + ')' }"></div>
         <div class="profile-menu-area bg-white">
           <div class="container">
             <div class="row align-items-center">
@@ -96,6 +96,11 @@
                           <!--</div>-->
                         </div>
                       </div>
+                      <div class="row" v-if="members.length===0" style="padding-top: 50px">
+                        <div class="col-md-6">
+                          <h4> Currently no member yet!</h4>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -121,7 +126,7 @@
   export default {
     data() {
       return {
-        // sample_img: '',
+        bgImage: '',
         images: [],
         members: [],
         groupData: {},
@@ -161,7 +166,8 @@
       },
       async groupInfo() {
         let groupInfoData = await axios.get(`/Wallet_GetGroupInfo?GroupID=${this.$route.params.id}`);
-        this.groupData = groupInfoData.data
+        this.groupData = groupInfoData.data;
+        this.bgImage = "'" + this.groupData.group_cover_image_url + "'";
       },
       async getMembers() {
         let members = await axios.get(`/Wallet_Getmemberlist?GroupID=${this.$route.params.id}&page=1&rows=100`);

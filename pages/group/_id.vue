@@ -3,9 +3,10 @@
     <main-header></main-header>
     <main>
       <div class="main-wrapper">
-        <div class="profile-banner-large bg-img" :data-bg="groupData.group_cover_image_url"></div>
+        <!--<div class="profile-banner-large bg-img"></div>-->
+        <div class="profile-banner-large bg-img" :style="{ backgroundImage: 'url(' + bgImage + ')' }"></div>
         <!--<div class="profile-banner-large bg-img">-->
-        <!--<img class="profile-banner-large bg-img" :src="sample_img" alt="">-->
+          <!--<img class="" :src="sample_img" alt="">-->
         <!--</div>-->
 
         <div class="profile-menu-area bg-white">
@@ -103,7 +104,8 @@
     data() {
       return {
         showModal: false,
-        sample_img: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg',
+        bgImage: "",
+        // sample_img: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg',
         wishes: [],
         groupData: {},
         images: []
@@ -120,14 +122,16 @@
         selector: ".gallery-selector",
         hash: false
       });
-
-      var bgSelector = $(".bg-img");
-      bgSelector.each(function (index, elem) {
-        var element = $(elem),
-          bgSource = element.data('bg');
-        console.log("Hello");
-        element.css('background-image', 'url(' + bgSource + ')');
-      });
+      // let app = this;
+      // var bgSelector = $(".bg-img");
+      // bgSelector.each(function (index, elem) {
+      //   let element = $(elem);
+      //     // bgSource = element.data('bg');
+      //     // bgSource = app.groupData.group_cover_image_url;
+      //   console.log("Hello Monted");
+      //   // console.log(app.groupData);
+      //   element.css('background-image', 'url(' + app.sample_img + ')');
+      // });
     },
     created() {
       this.getImages();
@@ -146,9 +150,12 @@
         // let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
         let groupInfoData = await axios.get(`/Wallet_GetGroupInfo?GroupID=${this.$route.params.id}`);
         this.groupData = groupInfoData.data;
-        console.log("this.groupData");
-        console.log(this.groupData);
-        console.log(typeof this.groupData);
+        this.bgImage = "'" + this.groupData.group_cover_image_url + "'";
+
+        // console.log("img");
+        // console.log(this.groupData.group_cover_image_url);
+        // console.log("this.groupData");
+        // console.log(this.groupData);
       },
       async getImages() {
         // let groupInfoData = await axios.get(`/9b1a08b6-7217-4a38-ac57-5fe3a66d536c`);
