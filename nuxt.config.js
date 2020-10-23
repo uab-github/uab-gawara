@@ -11,7 +11,7 @@ export default {
       {name: 'apple-mobile-web-app-capable', content: "yes"},
       {property: 'og:title', content: 'Garawa'},
       // {property: 'og:image', content: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg'},
-      {property: 'og:image', content: '~/assets/images/cover.jpg'},
+      {property: 'og:image', content: '/cover.jpg'},
       {property: 'og:url', content: 'https://go.nuxtjs.dev/config-head'},
       {property: 'og:site_name', content: 'Garawa'},
     ],
