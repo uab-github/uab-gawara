@@ -3,7 +3,7 @@
     <main-header></main-header>
     <main>
       <div class="main-wrapper">
-        <div class="profile-banner-large bg-img" :data-bg="sample_img"></div>
+        <div class="profile-banner-large bg-img" data-bg="~/assets/images/cover.jpg"></div>
         <div class="profile-menu-area bg-white">
           <div class="container">
             <div class="row align-items-center">
@@ -12,18 +12,18 @@
                   <figure class="profile-picture">
                     <a href="#">
                       <img
-                        src="~/assets/images/profile/profile-1.jpg"
+                        src="~/assets/images/cover.jpg"
                         alt="profile picture"
                       />
                     </a>
                   </figure>
                 </div>
               </div>
-              <navbar></navbar>
+              <!--<navbar></navbar>-->
               <div class="col-lg-2 col-md-3 d-none d-md-block">
-                <div class="profile-edit-panel">
-                  <button class="edit-btn join-group" @click="showModal = true">Join Group</button>
-                </div>
+                <!--<div class="profile-edit-panel">-->
+                  <!--<button class="edit-btn join-group" @click="showModal = true">Join Group</button>-->
+                <!--</div>-->
               </div>
             </div>
           </div>
@@ -33,76 +33,49 @@
             <div class="col-lg-3 order-2 order-lg-1">
               <aside class="widget-area profile-sidebar">
                 <!-- widget single item start -->
-                <group-info></group-info>
+                <!--<group-info></group-info>-->
                 <!-- widget single item end -->
                 <!-- widget single item start -->
-                <images></images>
+                <!--<images></images>-->
               </aside>
             </div>
             <div class="col-lg-9 order-1 order-lg-2">
               <!-- post status start -->
-              <div class="card">
-                <!-- post title start -->
-                <div class="post-title d-flex align-items-center" style="margin-left:-20px">
-                  <div class="posted-author">
-                    <h4 class="author" style="font-size: 18px;font-weight: bold;">
-                      "မြတ်ဆရာကန့်တော့ပွဲ" အဖွဲ့ရည်ရွယ်ချက်
-                    </h4>
-                  </div>
-                </div>
-                <!-- post title start -->
-                <div class="post-content">
-                  <p class="post-desc">
-                    Many desktop publishing packages and web page editors now
-                    use Lorem Ipsum as their default model text, and a search
-                    for 'lorem ipsum' will uncover many web sites still in their
-                    infancy.
-                  </p>
+              <!--<div class="card">-->
+                <!--&lt;!&ndash; post title start &ndash;&gt;-->
+                <!--<div class="post-title d-flex align-items-center" style="margin-left:-20px">-->
+                  <!--<div class="posted-author">-->
+                    <!--<h4 class="author" style="font-size: 18px;font-weight: bold;">-->
+                      <!--"မြတ်ဆရာကန့်တော့ပွဲ" အဖွဲ့ရည်ရွယ်ချက်-->
+                    <!--</h4>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash; post title start &ndash;&gt;-->
+                <!--<div class="post-content">-->
+                  <!--<p class="post-desc">-->
+                    <!--Many desktop publishing packages and web page editors now-->
+                    <!--use Lorem Ipsum as their default model text, and a search-->
+                    <!--for 'lorem ipsum' will uncover many web sites still in their-->
+                    <!--infancy.-->
+                  <!--</p>-->
 
-                  <div class="profile-edit-panel d-lg-none">
-                    <button class="edit-btn join-group" @click="showModal = true">Join Group</button>
-                  </div>
-                </div>
-              </div>
-              <div v-if="showModal">
-                <modal :modal-status="modalStatus"></modal>
-                <!--<transition name="modal">-->
-                <!--<div class="modal-mask">-->
-                <!--<div class="modal-wrapper">-->
-                <!--<div class="modal-dialog" role="document">-->
-                <!--<div class="modal-content">-->
-                <!--<div class="modal-header">-->
-                <!--<h5 class="modal-title">Group Save</h5>-->
-                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-                <!--<span aria-hidden="true" @click="showModal = false">&times;</span>-->
-                <!--</button>-->
+                  <!--&lt;!&ndash;<div class="profile-edit-panel d-lg-none">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<button class="edit-btn join-group" @click="showModal = true">Join Group</button>&ndash;&gt;-->
+                  <!--&lt;!&ndash;</div>&ndash;&gt;-->
                 <!--</div>-->
-                <!--<div class="modal-body">-->
-                <!--<div class="form-group">-->
-                <!--<label for="phone">Enter Phone</label>-->
-                <!--<input type="text" class="form-control" id="phone"-->
-                <!--aria-describedby="emailHelp" placeholder="Enter phone">-->
-                <!--</div>-->
-                <!--&lt;!&ndash;<p>Modal body text goes here.</p>&ndash;&gt;-->
-                <!--</div>-->
-                <!--<div class="modal-footer">-->
-                <!--<button type="button" class="edit-btn join-group" @click="save">Save Change</button>-->
-                <!--&lt;!&ndash;<button type="button" class="btn btn-primary">Save changes</button>&ndash;&gt;-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</transition>-->
-              </div>
+              <!--</div>-->
+              <!--<div v-if="showModal">-->
+                <!--<modal :modal-status="modalStatus"></modal>-->
+                <!---->
+              <!--</div>-->
 
-              <div class="card" v-for="(title, index) in titles">
-                {{title.body}}
-              </div>
-              <infinite-loading
-                spinner="spiral"
-                @infinite="infiniteScroll"
-              ></infinite-loading>
+              <!--<div class="card" v-for="(title, index) in titles">-->
+                <!--{{title.body}}-->
+              <!--</div>-->
+              <!--<infinite-loading-->
+                <!--spinner="spiral"-->
+                <!--@infinite="infiniteScroll"-->
+              <!--&gt;</infinite-loading>-->
 
               <!--<wish></wish>-->
               <!-- post status end -->
