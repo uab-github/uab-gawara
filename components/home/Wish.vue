@@ -90,7 +90,7 @@
         {{wish.content}}
       </p>
       <div class="post-thumb-gallery">
-        <figure class="post-thumb img-popup">
+        <figure class="post-thumb img-popup" v-if="wish.wish_image_url!==null && wish.wish_image_url!=='0'">
           <a
             :href="wish.wish_image_url">
             <img
