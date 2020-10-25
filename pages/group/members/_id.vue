@@ -64,7 +64,8 @@
                               <div class="profile-thumb">
 
                                 <figure class="profile-thumb-middle">
-                                  <img src="~/assets/images/profile/profile-small-1.jpg" alt="profile picture">
+                                  <!--<img src="~/assets/images/profile/profile-small-1.jpg" alt="profile picture">-->
+                                  <img src="http://www.gravatar.com/avatar/?d=identicon" alt="profile picture">
                                 </figure>
 
                               </div>
