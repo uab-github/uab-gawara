@@ -16,7 +16,7 @@
           </li>
           <li>
             <a href="#"
-            ><i class="bi bi-pin-man"></i>{{group.donation_last_date}}</a
+            ><i class="bi bi-pin-man"></i>{{splitTime(group.donation_last_date)}}</a
             >
           </li>
         </ul>
@@ -27,6 +27,7 @@
 </template>
 <script>
   import axios from '~/plugins/axios'
+
 
   export default {
 
@@ -44,7 +45,16 @@
 
     },
     methods: {
+      splitTime(dateTime) {
 
+        if (dateTime !== null && dateTime !== '' && dateTime !== undefined) {
+          dateTime.split(" ");
+          console.log("dateTime");
+          let splitArray = dateTime.split(" ");
+          return splitArray[0];
+        }
+        return dateTime;
+      }
     }
 
   }
