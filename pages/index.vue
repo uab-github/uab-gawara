@@ -3,20 +3,23 @@
     <main-header></main-header>
     <main>
       <div class="main-wrapper">
-        <div class="profile-banner-large bg-img" data-bg="~/assets/images/cover.jpg"></div>
+        <!--<div class="profile-banner-large bg-img" data-bg="~/assets/images/cover.jpg"></div>-->
+        <div class="profile-banner-large bg-img">
+          <img class="profile-banner-large bg-img" src="~/assets/images/cover.jpg" alt="" style="width: 100%;height: 136%">
+        </div>
         <div class="profile-menu-area bg-white">
           <div class="container">
             <div class="row align-items-center">
               <div class="col-lg-3 col-md-3">
                 <div class="profile-picture-box">
-                  <figure class="profile-picture">
-                    <a href="#">
-                      <img
-                        src="~/assets/images/cover.jpg"
-                        alt="profile picture"
-                      />
-                    </a>
-                  </figure>
+                  <!--<figure class="profile-picture">-->
+                    <!--<a href="#">-->
+                      <!--<img-->
+                        <!--src="~/assets/images/cover.jpg"-->
+                        <!--alt="profile picture"-->
+                      <!--/>-->
+                    <!--</a>-->
+                  <!--</figure>-->
                 </div>
               </div>
               <!--<navbar></navbar>-->
