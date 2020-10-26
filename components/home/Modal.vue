@@ -79,7 +79,7 @@
             // 'http://itunes.apple.com/lb/app/PACKAGEURL';
             'https://apps.apple.com/us/app/uabpay/id1496595220';
         }
-        console.log(this.$route.params.id);
+        // console.log(this.$route.params.id);
         this.$swal('Thank',
           'Please login your uabPay.',
           'success');

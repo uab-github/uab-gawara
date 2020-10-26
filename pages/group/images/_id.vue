@@ -43,7 +43,7 @@
                   <div class="widget-body">
                     <div class="sweet-galley img-gallery">
                       <div class="row row-5">
-                        <images v-bind:image="image"  v-for="image in images"></images>
+                        <images v-bind:image="image" v-for="image in images"></images>
                       </div>
                     </div>
                   </div>
@@ -160,7 +160,7 @@
       this.groupInfo();
       this.getImages();
       this.getImagesSweet();
-      this.sample_img=this.groupData.group_cover_image_url
+      this.sample_img = this.groupData.group_cover_image_url
 
     },
     async fetch() {
@@ -215,7 +215,6 @@
       },
       modalStatus(request) {
         this.showModal = request;
-        console.log("Hello12312323123123213");
       }
 
     }

@@ -148,7 +148,7 @@
       bgSelector.each(function (index, elem) {
         var element = $(elem),
           bgSource = element.data('bg');
-        console.log("Hello");
+        // console.log("Hello");
         element.css('background-image', 'url(' + bgSource + ')');
       });
     },
@@ -179,7 +179,6 @@
       },
       modalStatus(request) {
         this.showModal = request;
-        console.log("Hello12312323123123213");
       }
     }
   }
