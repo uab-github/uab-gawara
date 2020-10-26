@@ -33,7 +33,7 @@
     mounted() {
     },
     created() {
-      console.log(this.$route.name);
+      // console.log(this.$route.name);
 
       this.setActive(
         this.$route.name !== undefined ? this.$route.name : "id"
