@@ -46,10 +46,8 @@
     },
     methods: {
       splitTime(dateTime) {
-
         if (dateTime !== null && dateTime !== '' && dateTime !== undefined) {
           dateTime.split(" ");
-          console.log("dateTime");
           let splitArray = dateTime.split(" ");
           return splitArray[0];
         }

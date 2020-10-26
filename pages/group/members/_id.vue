@@ -73,27 +73,27 @@
                               <div class="posted-author">
                                 <h6 class="author" style="padding-top: 10px">{{member.name}}</h6>
                                 <h6 class="author" style="padding-top: 10px">{{member.role}}</h6>
-                                <h6 class="author" style="padding-top: 10px">{{member.created_date}}</h6>
+                                <h6 class="author" style="padding-top: 10px">{{splitTime(member.created_date)}}</h6>
                               </div>
                             </div>
                           </div>
                           <!--<div class="col-lg-4 col-sm-6 recently request">-->
-                            <!--<div class="friend-list-view" style="cursor: default">-->
-                              <!--&lt;!&ndash; profile picture end &ndash;&gt;-->
-                              <!--<div class="profile-thumb">-->
-                                <!--<a href="#">-->
-                                  <!--<figure class="profile-thumb-middle">-->
-                                    <!--<img src="~/assets/images/profile/profile-small-1.jpg" alt="profile picture">-->
-                                  <!--</figure>-->
-                                <!--</a>-->
-                              <!--</div>-->
-                              <!--&lt;!&ndash; profile picture end &ndash;&gt;-->
-                              <!--<div class="posted-author">-->
-                                <!--<h6 class="author" style="padding-top: 10px">Kate Midiltoin</h6>-->
-                                <!--<h6 class="author" style="padding-top: 10px">member</h6>-->
-                                <!--<h6 class="author" style="padding-top: 10px">20-10-2020</h6>-->
-                              <!--</div>-->
-                            <!--</div>-->
+                          <!--<div class="friend-list-view" style="cursor: default">-->
+                          <!--&lt;!&ndash; profile picture end &ndash;&gt;-->
+                          <!--<div class="profile-thumb">-->
+                          <!--<a href="#">-->
+                          <!--<figure class="profile-thumb-middle">-->
+                          <!--<img src="~/assets/images/profile/profile-small-1.jpg" alt="profile picture">-->
+                          <!--</figure>-->
+                          <!--</a>-->
+                          <!--</div>-->
+                          <!--&lt;!&ndash; profile picture end &ndash;&gt;-->
+                          <!--<div class="posted-author">-->
+                          <!--<h6 class="author" style="padding-top: 10px">Kate Midiltoin</h6>-->
+                          <!--<h6 class="author" style="padding-top: 10px">member</h6>-->
+                          <!--<h6 class="author" style="padding-top: 10px">20-10-2020</h6>-->
+                          <!--</div>-->
+                          <!--</div>-->
                           <!--</div>-->
                         </div>
                       </div>
@@ -179,6 +179,15 @@
       },
       modalStatus(request) {
         this.showModal = request;
+      },
+      splitTime(dateTime) {
+        if (dateTime !== null && dateTime !== '' && dateTime !== undefined) {
+          dateTime.split(" ");
+          console.log("dateTime");
+          let splitArray = dateTime.split(" ");
+          return splitArray[0];
+        }
+        return dateTime;
       }
     }
   }
