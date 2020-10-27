@@ -106,8 +106,9 @@
       return {
         showModal: false,
         bgImage: "",
-        // sample_img: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg',
-        sample_img: 'https://admin.myanmarelection2020.com/images/faq/election_law.jpg',
+        sample_img: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg',
+        sample_img_sai_sai: 'https://admin.myanmarelection2020.com/images/faq/election_law.jpg',
+        cover_image_url: '',
         wishes: [],
         groupData: {},
         images: [],
@@ -175,6 +176,11 @@
         let groupInfoData = await axios.get(`/Wallet_GetGroupInfo?GroupID=${this.$route.params.id}`);
         this.groupData = groupInfoData.data;
         this.bgImage = "'" + this.groupData.group_cover_image_url + "'";
+        if (this.groupData.group_member === 1) {
+          this.cover_image_url = this.sample_img
+        } else {
+          this.cover_image_url = this.sample_img_sai_sai
+        }
 
         // console.log("img");
         // console.log(this.groupData.group_cover_image_url);
