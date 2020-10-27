@@ -15,11 +15,11 @@ export default {
       {name: 'viewport', content: 'width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=0'},
       {hid: 'description', name: 'description', content: ''},
       {name: 'apple-mobile-web-app-capable', content: "yes"},
-      {property: 'og:title', content: 'Garawa'},
+      // {property: 'og:title', content: 'Garawa'},
       // {property: 'og:image', content: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg'},
-      {property: 'og:image', content: '/cover.jpg'},
-      {property: 'og:url', content: 'https://go.nuxtjs.dev/config-head'},
-      {property: 'og:site_name', content: 'Garawa'},
+      // {property: 'og:image', content: '/cover.jpg'},
+      // {property: 'og:url', content: 'https://go.nuxtjs.dev/config-head'},
+      // {property: 'og:site_name', content: 'Garawa'},
     ],
     link: [
       {

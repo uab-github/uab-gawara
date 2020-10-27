@@ -106,9 +106,9 @@
       return {
         showModal: false,
         bgImage: "",
-        sample_img: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg',
-        sample_img_sai_sai: 'https://admin.myanmarelection2020.com/images/faq/election_law.jpg',
-        cover_image_url: '',
+        sample_img: 'https://admin.myanmarelection2020.com/cover.jpg',
+        sample_img_sai_sai: 'https://admin.myanmarelection2020.com/sai_sai_cover.jpg',
+        image: '',
         wishes: [],
         groupData: {},
         images: [],
@@ -116,23 +116,39 @@
         imageUrl: '',
       }
     },
-    // head() {
-    //   return {
-    //     meta: [
-    //       {charset: 'utf-8'},
-    //       {name: 'viewport', content: 'width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=0'},
-    //       {hid: 'description', name: 'description', content: ''},
-    //       {name: 'apple-mobile-web-app-capable', content: "yes"},
-    //       {property: 'og:title', content: 'e-Garawa'},
-    //       // {property: 'og:image', content: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg'},
-    //       {property: 'og:image', content: this.sample_img},
-    //       {property: 'og:url', content: 'https://go.nuxtjs.dev/config-head'},
-    //       {property: 'og:site_name', content: 'e-Garawa'},
-    //     ]
-    //   }
+    // async asyncData ({ query, store }) {
+    //
     // },
+    head() {
+      console.log("head");
+      console.log(this.imageData);
+      return {
+        meta: [
+          {charset: 'utf-8'},
+          {name: 'viewport', content: 'width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=0'},
+          {hid: 'description', name: 'description', content: ''},
+          {name: 'apple-mobile-web-app-capable', content: "yes"},
+          {property: 'og:title', content: 'Garawa'},
+          // {property: 'og:image', content: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg'},
+          {property: 'og:image', content: this.imageData},
+          {property: 'og:url', content: 'https://go.nuxtjs.dev/config-head'},
+          {property: 'og:site_name', content: 'Garawa'},
+        ]
+      }
+    },
     components: {
       MainHeader, Navbar, GroupInfo, Images, Wish, Modal
+    },
+
+    computed: {
+      imageData() {
+        if (this.$route.query.app === 'saisai') {
+          return this.sample_img_sai_sai
+        } else {
+          return this.sample_img
+        }
+        // return this.$store.state.todos.list
+      }
     },
     mounted() {
       $(".img-popup").lightGallery();
@@ -154,33 +170,35 @@
       // });
     },
     created() {
-      this.setCover('testing');
+      console.log("created");
+      // this.setCover('testing');
       // console.log(this.$store.state.cover.cover);
       this.groupInfo();
       this.getImages();
       this.getWishes();
     },
     methods: {
-      ...mapMutations({
-        setCover: 'cover/set'
-      }),
+      // ...mapMutations({
+      //   setCover: 'cover/set'
+      // }),
       async getWishes() {
-        // console.log(this.$route.params.id);
+        // console.log(this.$route.query.app);
         // let wishData = await axios.get(`/2752cadf-2f86-4ba9-b241-a51ddf761318`);
         // let wishData = await axios.get(`/a5d012ff-5df7-4d7a-8054-fdb9178816e9`);
         let wishData = await axios.get(`/Wallet_GetWishlist?GroupID=${this.$route.params.id}&page&page=1&rows=100`);
         this.wishes = wishData.data.wishes;
       },
       async groupInfo() {
+        console.log("group");
         // let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
         let groupInfoData = await axios.get(`/Wallet_GetGroupInfo?GroupID=${this.$route.params.id}`);
         this.groupData = groupInfoData.data;
         this.bgImage = "'" + this.groupData.group_cover_image_url + "'";
-        if (this.groupData.group_member === 1) {
-          this.cover_image_url = this.sample_img
-        } else {
-          this.cover_image_url = this.sample_img_sai_sai
-        }
+        // if (this.groupData.group_member === 1) {
+        //   this.cover_image_url = this.sample_img
+        // } else {
+        //   this.cover_image_url = this.sample_img_sai_sai
+        // }
 
         // console.log("img");
         // console.log(this.groupData.group_cover_image_url);
