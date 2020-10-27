@@ -106,8 +106,8 @@
       return {
         showModal: false,
         bgImage: "",
-        sample_img: 'https://admin.myanmarelection2020.com/cover.jpg',
-        sample_img_sai_sai: 'https://admin.myanmarelection2020.com/sai_sai_cover.jpg',
+        cover_image: 'https://garawa-cover.s3-ap-southeast-1.amazonaws.com/Cover1.jpg',
+        cover_image_sai_sai: 'https://garawa-cover.s3-ap-southeast-1.amazonaws.com/Cover2.jpg',
         image: '',
         wishes: [],
         groupData: {},
@@ -120,8 +120,8 @@
     //
     // },
     head() {
-      console.log("head");
-      console.log(this.imageData);
+      // console.log("head");
+      // console.log(this.imageData);
       return {
         meta: [
           {charset: 'utf-8'},
@@ -143,9 +143,9 @@
     computed: {
       imageData() {
         if (this.$route.query.app === 'saisai') {
-          return this.sample_img_sai_sai
+          return this.cover_image_sai_sai
         } else {
-          return this.sample_img
+          return this.cover_image
         }
         // return this.$store.state.todos.list
       }
@@ -170,9 +170,8 @@
       // });
     },
     created() {
-      console.log("created");
+
       // this.setCover('testing');
-      // console.log(this.$store.state.cover.cover);
       this.groupInfo();
       this.getImages();
       this.getWishes();
@@ -182,7 +181,6 @@
       //   setCover: 'cover/set'
       // }),
       async getWishes() {
-        // console.log(this.$route.query.app);
         // let wishData = await axios.get(`/2752cadf-2f86-4ba9-b241-a51ddf761318`);
         // let wishData = await axios.get(`/a5d012ff-5df7-4d7a-8054-fdb9178816e9`);
         let wishData = await axios.get(`/Wallet_GetWishlist?GroupID=${this.$route.params.id}&page&page=1&rows=100`);
