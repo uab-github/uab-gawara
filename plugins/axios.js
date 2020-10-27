@@ -9,6 +9,6 @@ export default axios.create({
     }
   },
   // baseURL: 'https://run.mocky.io/v3'
-  // baseURL: 'http://webapi.uatuab.com/API/Wallet',
-  baseURL: 'https://uabpay.uab.com.mm/API/Wallet'
+  baseURL: 'http://webapi.uatuab.com/API/Wallet',
+  // baseURL: 'https://uabpay.uab.com.mm/API/Wallet'
 })

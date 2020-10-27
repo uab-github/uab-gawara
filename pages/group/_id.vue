@@ -6,7 +6,7 @@
         <!--<div class="profile-banner-large bg-img"></div>-->
         <div class="profile-banner-large bg-img" :style="{ backgroundImage: 'url(' + bgImage + ')' }"></div>
         <!--<div class="profile-banner-large bg-img">-->
-          <!--<img class="" :src="sample_img" alt="">-->
+        <!--<img class="" :src="sample_img" alt="">-->
         <!--</div>-->
 
         <div class="profile-menu-area bg-white">
@@ -98,6 +98,7 @@
   import Images from "../../components/home/Images";
   import Wish from "../../components/home/Wish";
   import Modal from "../../components/home/Modal";
+  import {mapMutations} from "vuex";
 
 
   export default {
@@ -108,7 +109,24 @@
         // sample_img: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg',
         wishes: [],
         groupData: {},
-        images: []
+        images: [],
+        title: '',
+        imageUrl: '',
+      }
+    },
+    head() {
+      return {
+        meta: [
+          {charset: 'utf-8'},
+          {name: 'viewport', content: 'width=device-width, initial-scale=1,maximum-scale=1.0,user-scalable=0'},
+          {hid: 'description', name: 'description', content: ''},
+          {name: 'apple-mobile-web-app-capable', content: "yes"},
+          {property: 'og:title', content: 'Garawa'},
+          // {property: 'og:image', content: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg'},
+          {property: 'og:image', content: `${this.bgImage}`},
+          {property: 'og:url', content: 'https://go.nuxtjs.dev/config-head'},
+          {property: 'og:site_name', content: 'Garawa'},
+        ]
       }
     },
     components: {
@@ -134,17 +152,22 @@
       // });
     },
     created() {
+      this.setCover('testing');
+      // console.log(this.$store.state.cover.cover);
+      this.groupInfo();
       this.getImages();
       this.getWishes();
-      this.groupInfo();
     },
     methods: {
+      ...mapMutations({
+        setCover: 'cover/set'
+      }),
       async getWishes() {
         // console.log(this.$route.params.id);
         // let wishData = await axios.get(`/2752cadf-2f86-4ba9-b241-a51ddf761318`);
         // let wishData = await axios.get(`/a5d012ff-5df7-4d7a-8054-fdb9178816e9`);
         let wishData = await axios.get(`/Wallet_GetWishlist?GroupID=${this.$route.params.id}&page&page=1&rows=100`);
-        this.wishes = wishData.data.wishes
+        this.wishes = wishData.data.wishes;
       },
       async groupInfo() {
         // let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);

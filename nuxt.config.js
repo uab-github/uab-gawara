@@ -1,7 +1,13 @@
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   target: 'server',
-
+  // async asyncData({route, store, error}) {
+  //   let data = {
+  //     title: ''
+  //   }
+  //   data.title=this.$store.state.cover.cover
+  //   return
+  // },
   head: {
     title: 'uab Garawa',
     meta: [
