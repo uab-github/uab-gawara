@@ -107,6 +107,7 @@
         showModal: false,
         bgImage: "",
         // sample_img: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg',
+        sample_img: 'https://admin.myanmarelection2020.com/images/faq/election_law.jpg',
         wishes: [],
         groupData: {},
         images: [],
@@ -123,7 +124,7 @@
           {name: 'apple-mobile-web-app-capable', content: "yes"},
           {property: 'og:title', content: 'e-Garawa'},
           // {property: 'og:image', content: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg'},
-          {property: 'og:image', content: `${this.bgImage}`},
+          {property: 'og:image', content: this.sample_img},
           {property: 'og:url', content: 'https://go.nuxtjs.dev/config-head'},
           {property: 'og:site_name', content: 'e-Garawa'},
         ]
