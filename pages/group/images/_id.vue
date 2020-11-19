@@ -80,25 +80,6 @@
                           <div class="col-md-6" style="padding-top: 17px" v-else>
                             <h4>no Images</h4>
                           </div>
-
-                          <!--<div class="col-sm-6 col-md-6">-->
-                          <!--<div class="card" style="padding: 0;margin-top: 20px">-->
-                          <!--<div class="post-thumb-gallery">-->
-                          <!--<figure class="post-thumb img-popup">-->
-                          <!--<a-->
-                          <!--href="https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg">-->
-                          <!--<img-->
-                          <!--src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_509107562_2000133320009280346_351827.jpg"-->
-                          <!--alt="post image"-->
-                          <!--/>-->
-                          <!--</a>-->
-                          <!--</figure>-->
-                          <!--<div class="photo-gallery-caption">-->
-                          <!--<h3 class="photos-caption">Photos in dinner</h3>-->
-                          <!--</div>-->
-                          <!--</div>-->
-                          <!--</div>-->
-                          <!--</div>-->
                         </div>
                       </div>
                     </div>
@@ -139,7 +120,6 @@
       MainHeader, Navbar, GroupInfo, Images, Wish, Modal
     },
     mounted() {
-      // this.getImages();
 
       $(".img-popup").lightGallery();
 
@@ -148,13 +128,6 @@
         selector: ".gallery-selector",
         hash: false
       });
-      // var bgSelector = $(".bg-img");
-      // bgSelector.each(function (index, elem) {
-      //   var element = $(elem),
-      //     bgSource = element.data('bg');
-      //   console.log("Hello");
-      //   element.css('background-image', 'url(' + bgSource + ')');
-      // });
     },
     created() {
       this.groupInfo();
@@ -164,8 +137,6 @@
 
     },
     async fetch() {
-
-      // let images = await axios.get(`/9b1a08b6-7217-4a38-ac57-5fe3a66d536c`);
       let images = await axios.get(`/Wallet_GetGroupImage?GroupID=${this.$route.params.id}`);
       this.images = images.data.data;
 
@@ -180,13 +151,11 @@
     methods: {
 
       async groupInfo() {
-        // let groupInfoData = await axios.get(`/90466ad7-b106-4295-aeaf-f3cfbfea0ba1`);
         let groupInfoData = await axios.get(`/Wallet_GetGroupInfo?GroupID=${this.$route.params.id}`);
         this.groupData = groupInfoData.data;
         this.bgImage = "'" + this.groupData.group_cover_image_url + "'";
       },
       async getImages() {
-        // let groupInfoData = await axios.get(`/9b1a08b6-7217-4a38-ac57-5fe3a66d536c`);
         let images = await axios.get(`/Wallet_GetGroupImage?GroupID=${this.$route.params.id}`);
         this.images = images.data.data;
         $(".img-popup").lightGallery();
@@ -196,7 +165,6 @@
           selector: ".gallery-selector",
           hash: false
         });
-        // this.sample_img = this.images[1].image_url;
       },
       async getImagesSweet() {
         let images = await axios.get(`/Wallet_GetGroupImage?GroupID=${this.$route.params.id}`);
@@ -208,7 +176,6 @@
           selector: ".gallery-selector",
           hash: false
         });
-        // this.sample_img = this.images[1].image_url;
       },
       save() {
         this.showModal = false

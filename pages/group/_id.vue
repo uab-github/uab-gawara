@@ -3,11 +3,7 @@
     <main-header></main-header>
     <main>
       <div class="main-wrapper">
-        <!--<div class="profile-banner-large bg-img"></div>-->
         <div class="profile-banner-large bg-img" :style="{ backgroundImage: 'url(' + bgImage + ')' }"></div>
-        <!--<div class="profile-banner-large bg-img">-->
-        <!--<img class="" :src="sample_img" alt="">-->
-        <!--</div>-->
 
         <div class="profile-menu-area bg-white">
           <div class="container">
@@ -98,8 +94,6 @@
   import Images from "../../components/home/Images";
   import Wish from "../../components/home/Wish";
   import Modal from "../../components/home/Modal";
-  import {mapMutations} from "vuex";
-
 
   export default {
     data() {
@@ -116,12 +110,8 @@
         imageUrl: '',
       }
     },
-    // async asyncData ({ query, store }) {
-    //
-    // },
+
     head() {
-      // console.log("head");
-      // console.log(this.imageData);
       return {
         meta: [
           {charset: 'utf-8'},
@@ -147,7 +137,6 @@
         } else {
           return this.cover_image
         }
-        // return this.$store.state.todos.list
       }
     },
     mounted() {
@@ -158,16 +147,6 @@
         selector: ".gallery-selector",
         hash: false
       });
-      // let app = this;
-      // var bgSelector = $(".bg-img");
-      // bgSelector.each(function (index, elem) {
-      //   let element = $(elem);
-      //     // bgSource = element.data('bg');
-      //     // bgSource = app.groupData.group_cover_image_url;
-      //   console.log("Hello Monted");
-      //   // console.log(app.groupData);
-      //   element.css('background-image', 'url(' + app.sample_img + ')');
-      // });
     },
     created() {
 
@@ -177,12 +156,7 @@
       this.getWishes();
     },
     methods: {
-      // ...mapMutations({
-      //   setCover: 'cover/set'
-      // }),
       async getWishes() {
-        // let wishData = await axios.get(`/2752cadf-2f86-4ba9-b241-a51ddf761318`);
-        // let wishData = await axios.get(`/a5d012ff-5df7-4d7a-8054-fdb9178816e9`);
         let wishData = await axios.get(`/Wallet_GetWishlist?GroupID=${this.$route.params.id}&page&page=1&rows=100`);
         this.wishes = wishData.data.wishes;
       },
@@ -192,19 +166,10 @@
         let groupInfoData = await axios.get(`/Wallet_GetGroupInfo?GroupID=${this.$route.params.id}`);
         this.groupData = groupInfoData.data;
         this.bgImage = "'" + this.groupData.group_cover_image_url + "'";
-        // if (this.groupData.group_member === 1) {
-        //   this.cover_image_url = this.sample_img
-        // } else {
-        //   this.cover_image_url = this.sample_img_sai_sai
-        // }
 
-        // console.log("img");
-        // console.log(this.groupData.group_cover_image_url);
-        // console.log("this.groupData");
-        // console.log(this.groupData);
       },
       async getImages() {
-        // let groupInfoData = await axios.get(`/9b1a08b6-7217-4a38-ac57-5fe3a66d536c`);
+
         let images = await axios.get(`/Wallet_GetGroupImage?GroupID=${this.$route.params.id}`);
         this.images = images.data.data;
         $(".img-popup").lightGallery();
@@ -214,7 +179,7 @@
           selector: ".gallery-selector",
           hash: false
         });
-        // this.sample_img = this.images[1].image_url;
+
       },
       save() {
         this.showModal = false
